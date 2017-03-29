@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="dom4j-1.6.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/feed4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/nekohtml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/xercesImpl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/xml-apis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
