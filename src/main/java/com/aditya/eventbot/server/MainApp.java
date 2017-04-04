@@ -18,16 +18,25 @@ public class MainApp {
         post("/event", (req, res) -> {
             System.out.println(req.body());
             try {
+                String address = Events.getAddress("book talk with congressman John Lewis");
+                System.out.println(address);
                 res.type("application/json");
-                String q = geo.getOn(geo.coor("Brett Hall"));
-                //String q = Events.getAddress("congressman");
-                System.out.println(q);
-                return q;
+                String on = geo.getOn(geo.coor("Brett Hall"));
+                String off = geo.getOff(geo.coor(address));
+                String bus = Bus.bus(on, off);
+                return formatString(on, off, bus);
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
             return null;
         });
+    }
+
+    private static String formatString(String on, String off, String bus){
+        return "{ " +
+                "\"speech\" : \"go to the "+on+" stop, take the " + bus + " and get off at the " + off + " stop. \", " +
+                "\"source\": \"webhook\", " +
+                "\"displayText\": \"rutgerss\" }";
     }
 
 }

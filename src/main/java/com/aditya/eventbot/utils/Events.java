@@ -1,9 +1,5 @@
 package com.aditya.eventbot.utils;
 
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.io.FeedException;
-import com.rometools.rome.io.SyndFeedInput;
-import com.rometools.rome.io.XmlReader;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.w3c.dom.Document;
@@ -31,38 +27,21 @@ import java.util.Scanner;
  */
 public class Events {
     public static String getAddress(String title) throws Throwable {
-        String response = makeQuery(title);
-        List<Object> list = new ArrayList<Object>();
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document document = db.parse(new InputSource(new StringReader(response)));
-        NodeList nodeList = document.getElementsByTagName("event:location");
-        return nodeList.item(0).getNodeValue();
-
-    }
-
-
-    private static String makeQuery(String title) throws Throwable {
-        URL url = new URL("https://ruevents.rutgers.edu/events/getEventsRss.xml?keyword=congressman");
+        URL url = new URL("https://ruevents.rutgers.edu/events/getEventsRss.xml?keyword=" + title);
 
         Feed feed = FeedParser.parse(url);
 
         System.out.println("** HEADER **");
         FeedHeader header = feed.getHeader();
-        System.out.println("Title: " + header.getTitle());
-        System.out.println("Link: " + header.getLink());
-        System.out.println("Description: " + header.getDescription());
-        System.out.println("Language: " + header.getLanguage());
-        System.out.println("PubDate: " + header.getPubDate());
-
-        System.out.println("** ITEMS **");
         int items = feed.getItemCount();
-        for (int i = 0; i < items; i++) {
-            FeedItem item = feed.getItem(i);
-            System.out.println("Title: " + item.getTitle());
-            System.out.println("Link: " + item.getLink());
-            //System.out.println("Location: " + item.);
+        if (items > 0) {
+
+            FeedItem item = feed.getItem(0);
+            return item.getElementValue("http://ruevents.rutgers.edu/events", "location");
+        } else {
+            return "No event found!";
         }
-        return "";
+
     }
+
 }

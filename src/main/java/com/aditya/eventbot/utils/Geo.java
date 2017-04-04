@@ -19,7 +19,7 @@ import java.util.*;
 public class Geo {
 
     public static int time = 0;
-    final static String API_KEY = "API_KEY_HERE";
+    final static String API_KEY = "AIzaSyBwN0rSKy-RywugPnHZVR57GumcmhxX57I";
 
     public Geo() {
 
@@ -199,37 +199,38 @@ public class Geo {
         }
         time = 0;
         time += (Integer) list.get(index);
-        String x = "{ " +
-                "\"speech\" : \"take the bus\", " +
-                "\"source\": \"webhook\", " +
-                "\"displayText\": \"rutgerss\" }";
+
         switch (closest) {
             case "College Ave":
-                //return x;
-                return "{ " +
+                return CA[index].getbCode();
+                /*return "{ " +
                         "\"speech\" : \"go to the "+CA[index].name+" stop\", " +
                         "\"source\": \"webhook\", " +
-                        "\"displayText\": \"rutgerss\" }";
+                        "\"displayText\": \"rutgerss\" }";*/
             case "Busch":
-                return "{ " +
+                return Bu[index].getbCode();
+                /*return "{ " +
                         "\"speech\" : \"go to the "+Bu[index].name+" stop\", " +
                         "\"source\": \"webhook\", " +
-                        "\"displayText\": \"rutgerss\" }";
+                        "\"displayText\": \"rutgerss\" }";*/
             case "Livingston":
-                return "{ " +
+                return Li[index].getbCode();
+                /*return "{ " +
                         "\"speech\" : \"go to the "+Li[index].name+" stop\", " +
                         "\"source\": \"webhook\", " +
-                        "\"displayText\": \"rutgerss\" }";
+                        "\"displayText\": \"rutgerss\" }";*/
             case "Cook":
-                return "{ " +
+                return Co[index].getbCode();
+                /*return "{ " +
                         "\"speech\" : \"go to the "+Co[index].name+" stop\", " +
                         "\"source\": \"webhook\", " +
-                        "\"displayText\": \"rutgerss\" }";
+                        "\"displayText\": \"rutgerss\" }";*/
             case "Douglas":
-                return "{ " +
+                return Doug[index].getbCode();
+                /*return "{ " +
                         "\"speech\" : \"go to the "+Doug[index].name+" stop\", " +
                         "\"source\": \"webhook\", " +
-                        "\"displayText\": \"rutgerss\" }";
+                        "\"displayText\": \"rutgerss\" }";*/
             default:
                 break;
         }
